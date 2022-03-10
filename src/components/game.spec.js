@@ -8,6 +8,14 @@ describe('game', () => {
 
   //clickCard: function(element,card_selection)
   describe('game.clickCard', ()=>{
+    it('Media Element', ()=>{
+        const playMedia = jest
+        .spyOn(window.HTMLMediaElement.prototype, 'play')
+        .mockImplementation(() => {})
+        Promise.resolve().then( () => {
+            expect(playMedia).toHaveBeenCalled()
+        });
+    });
     it('should be a function', ()=>{
       expect(typeof game.clickCard).toBe('function');
     });
@@ -37,6 +45,8 @@ describe('game', () => {
         element.id = 'id2';
         expect(game.clickCard(element, "radio_web")).toBe(1);
       });
+
+    
   });
 
   describe('game.rotateCard', () => {
